@@ -242,7 +242,7 @@ public class QianMoController {
         user.setUserid(userid);
         user.setUsername(username);
         user.setUserpassword(MD5Untils.string2MD5(password));
-//        userService.updUser(user);
+        userService.updUser(user);
         return true;
     }
 }

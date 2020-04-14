@@ -229,4 +229,20 @@ public class QianMoController {
         map.put("pages",(count/4));
         return map;
     }
+    @GetMapping("/my")
+    public String my(){
+        return "me";
+    }
+    //修改用户信息
+    @PutMapping("/update")
+    @ResponseBody
+    public Boolean update(@RequestParam("username")String username,@RequestParam("password")String password,HttpServletRequest request){
+        String  userid = (String) request.getSession().getAttribute("userid");
+        AllUser user = new AllUser();
+        user.setUserid(userid);
+        user.setUsername(username);
+        user.setUserpassword(MD5Untils.string2MD5(password));
+//        userService.updUser(user);
+        return true;
+    }
 }

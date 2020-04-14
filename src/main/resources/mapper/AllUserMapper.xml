@@ -8,4 +8,8 @@
     <insert id="addUser" parameterType="com.qianmo.entity.AllUser">
         insert into userinfo values(uuid(),#{username},#{useraccount},#{userpassword},#{userphone})
     </insert>
+    <!--修改信息-->
+    <update id="updUser" parameterType="com.qianmo.entity.AllUser">
+        update userinfo set username=#{username},userpassword=#{userpassword} where userid=#{userid}
+    </update>
 </mapper>

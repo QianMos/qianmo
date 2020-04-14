@@ -189,7 +189,10 @@ body{
 		display:none !important;
 	}
 }
-
+.layui-nav .layui-nav-child dd.layui-this a, .layui-nav-child dd.layui-this {
+	background-color: #1e9fff;
+	color: #fff;
+}
 /* end header */
 
 

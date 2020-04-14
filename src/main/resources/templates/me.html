@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/asserts/layui/css/layui.css}">
+</head>
+<body>
+<form class="layui-form" style="margin-top: 60px">
+    <div class="layui-form-item">
+        <label class="layui-form-label">用户名</label>
+        <div class="layui-input-inline">
+            <input type="text" name="username" required lay-verify="required" th:value="${session.username}" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">密码</label>
+        <div class="layui-input-inline">
+            <input type="password" name="password" required lay-verify="required" placeholder="请输入新密码" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn layui-btn-normal" lay-submit lay-filter="formDemo">立即提交</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+    </div>
+</form>
+<script th:src="@{/asserts/layui/layui.js}"></script>
+<script th:src='@{/asserts/login/js/jquery.min.js}' type="text/javascript"></script>
+<script>
+    layui.use('form', function(){
+        var form = layui.form;
+
+        //监听提交
+        form.on('submit(formDemo)', function(data){
+            var bl=false;
+            $.ajax({
+                url:"/update",
+                data:{
+                    'username':data.field.username,
+                    'password':data.field.password,
+                },
+                async: false,
+                type:'put',
+                success:function (data) {
+                    bl=data;
+                    parent.layer.msg('修改成功,即将退出登录!', {icon : 1,time : 1500});
+                },
+                error:function (error) {
+                    layer.msg('修改失败!', {icon : 2,time : 1000});
+                }
+            })
+            if(bl){
+                layer.msg('修改成功,即将退出登录!', {icon : 1,time : 1500});
+                window.parent.location="/loginout"
+            }
+        });
+    });
+</script>
+<style>
+    .layui-btn-normal {
+        background-color: #1E9FFF;
+    }
+    .layui-form-item{
+        width: 90%;
+        margin-left: -10px;
+    }
+</style>
+</body>
+</html>

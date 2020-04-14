@@ -24,7 +24,7 @@
             </div>
         </form>
         <div class="blog-nav pull-right">
-            <ul class="layui-nav pull-left">
+            <ul class="layui-nav pull-left" lay-filter="myBar">
                 <li th:class="${activeUri=='index'?'layui-nav-item layui-this':'layui-nav-item'}"><a th:href="@{/}">首页</a></li>
                 <li th:class="${activeUri=='message'?'layui-nav-item layui-this':'layui-nav-item'}"><a th:href="@{/message}">留言</a></li>
                 <li th:if="${not #strings.isEmpty(session.userid)}" th:class="${activeUri=='comment'?'layui-nav-item layui-this':'layui-nav-item'}"><a th:href="@{/comment}">我的</a></li>
@@ -33,7 +33,7 @@
                     <a href="javascript:;"><i class="layui-icon layui-icon-username"></i>
                         <span th:text="${session.username}" style="color: white;font-size: 14px"></span></a>
                     <dl class="layui-nav-child">
-                        <dd><a th:href="@{/my}">修改信息</a></dd>
+                        <dd><a href="javascript:void(0);" onclick ="my()">修改信息</a></dd>
                         <dd><a th:href="@{/loginout}">退出</a></dd>
                     </dl>
                 </li>
@@ -71,11 +71,6 @@
     layui.config({
         base: '../../asserts/static/js/'
     }).use('blog');
-    $("#search").bind("keydown",function (event) {
-        if(event.keyCode ==13){
-            alert("aaaaaaaa")
-        }
-    })
 </script>
 </body>
 </html>

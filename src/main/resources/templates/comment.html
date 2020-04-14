@@ -159,6 +159,17 @@
             return false;
         });
     });
+    function my() {
+        layer.open({
+            type: 2,
+            title: '修改个人信息',
+            area: [350+'px', 350 +'px'],
+            fix: false, //不固定
+            maxmin: true,
+            shadeClose: true,
+            shade:0.4,
+            content: '/my' //这里content是一个普通的String
+        });
 </script>
 <style>
 	.layui-form-onswitch{

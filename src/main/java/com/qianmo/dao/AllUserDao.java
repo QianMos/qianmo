@@ -15,4 +15,6 @@ public interface AllUserDao {
     AllUser getUserByAccount(String account);
 
     void addUser(AllUser user);
+
+    void updUser(AllUser user);
 }

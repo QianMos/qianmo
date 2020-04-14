@@ -14,10 +14,6 @@ layui.define(['element', 'form','laypage','jquery','laytpl'],function(exports){
     ,count: 50 //数据总数，从服务端得到
     ,theme: '#1e9fff'
   });
-  
-  // end 分頁
- 
-
 
   // start 导航显示隐藏
   

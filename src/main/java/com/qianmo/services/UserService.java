@@ -23,4 +23,8 @@ public class UserService {
     public void addUser(AllUser user) {
         allUserDao.addUser(user);
     }
+
+    public void updUser(AllUser user){
+        allUserDao.updUser(user);
+    }
 }

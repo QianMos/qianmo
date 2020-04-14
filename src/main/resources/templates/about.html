@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>关于-阡陌</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" th:href="@{/asserts/layui/css/layui.css}">
+	<link rel="stylesheet" th:href="@{/asserts/static/css/mian.css}">
+</head>
+<body class="lay-blog">
+<!--头部-->
+<div th:replace="commpontes/bar::topbar(activeUri='about')">
+</div>
+		<div class="container-wrap">
+			<div class="container container-message container-details container-about">
+					<div class="contar-wrap">
+						<div class="item">
+							<div class="item-box">
+								<h3>关于本站</h3>
+								<p>本站前端框架为layui,后端使用的是springboot+mybatis,调用了阿里云的短信接口提供注册和忘记密码服务。<br>
+								本站数据库为mysql和redis,redis主要作为短信验证的缓存使用,原本想使用mongodb作为文章存储的数据库，后来考虑到服务器原因从而给放弃。</p>
+								<div class="count layui-clear">
+								</div>
+							</div>
+						</div>
+						<div class="item">
+							<div class="item-box">
+								<h3>免责声明</h3>
+								<p>本站仅由作者一人开发，作者不会以任何方式透露本站用户的个人信息。<br>
+									本站仅作为作者和网友日常记录使用，无任何盈利性行为，如有问题，请通过网站留言联系作者</p>
+								<div class="count layui-clear">
+								</div>
+							</div>
+						</div>
+					</div>
+			</div>
+		</div>
+	<!--底部-->
+	<div th:replace="commpontes/bar::footerbar">
+
+	</div>
+	<script th:src="@{/asserts/layui/layui.js}"></script>
+	<script>
+		layui.config({
+		  base: '../asserts/static/js/'
+		}).use('blog');
+        layui.use('util', function(){
+            var util = layui.util;
+            //执行
+            util.fixbar({
+                bar1: false,
+                bgcolor: '#1e9fff'
+            });
+        });
+	</script>
+</body>
+</html>

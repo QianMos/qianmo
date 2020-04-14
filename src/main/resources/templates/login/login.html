@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<meta author="qianmo">
+	<title>登录 - 阡陌 - Crisscross footpaths</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/asserts/login/style/register-login.css}">
+</head>
+<body>
+<div id="box"></div>
+<div class="cent-box">
+	<div class="cent-box-header">
+		<a th:href="@{/}"><h1 class="main-title hide">阡陌</h1></a>
+		<h2 class="sub-title">生活热爱分享 - Crisscross footpaths</h2>
+	</div>
+
+	<div class="cont-main clearfix">
+		<div class="index-tab">
+			<div class="index-slide-nav">
+				<a th:href="@{/login}" class="active">登录</a>
+				<a th:href="@{/register}">注册</a>
+				<div class="slide-bar"></div>				
+			</div>
+		</div>
+		<div class="login form">
+			<div class="group">
+				<div class="group-ipt email">
+					<input type="text" name="useraccount" id="useraccount" class="ipt" placeholder="请输入您的账号" required>
+				</div>
+				<div class="group-ipt password">
+					<input type="password" name="userpassword" id="password" class="ipt" placeholder="输入您的登录密码" required>
+				</div>
+			</div>
+		</div>
+
+		<div class="button">
+			<button type="submit" class="login-btn register-btn" id="button">登录</button>
+		</div>
+		<div class="remember clearfix">
+			<!--<label class="remember-me"><span class="icon"><span class="zt"></span></span><input type="checkbox" name="remember-me" id="remember-me" class="remember-mecheck" checked>记住我</label>-->
+			<label class="forgot-password">
+				<a th:href="@{/forgetPwd}">忘记密码？</a>
+			</label>
+		</div>
+	</div>
+</div>
+
+<div class="footer">
+	<p>QianMo - 人生就是一场修行</p>
+	<p><a href="http://www.beian.miit.gov.cn/" target="_blank" style="text-decoration: none;color: #999;font-size: 13px">豫ICP备19045332号</a></p>
+</div>
+
+<script th:src='@{/asserts/login/js/particles.js}' type="text/javascript"></script>
+<script th:src='@{/asserts/login/js/background.js}' type="text/javascript"></script>
+<script th:src='@{/asserts/login/js/jquery.min.js}' type="text/javascript"></script>
+<script th:src='@{/asserts/login/js/layer/layer.js}' type="text/javascript"></script>
+<script th:src='@{/asserts/login/js/index.js}' type="text/javascript"></script>
+<script>
+    $("#remember-me").click(function(){
+		var n = document.getElementById("remember-me").checked;
+		if(n){
+			$(".zt").show();
+		}else{
+			$(".zt").hide();
+		}
+	});
+    $("#button").click(function () {
+		var username=$("#useraccount").val();
+        var password=$("#password").val();
+        if(username==''){
+            layer.msg("请输入账号!",{icon:7})
+            return false;
+		}
+		if(password==''){
+            layer.msg("请输入密码!",{icon:7})
+		    return false;
+		}
+		$.ajax({
+            url:"/user/login",
+            data:{
+                'username':username,
+				'password':password
+			},
+            type:"post",
+            success:function(data){
+                if(data){
+                    layer.msg('登录成功!', {icon : 1,time : 500},function () {
+                        window.parent.location.href="/";
+                    });
+                }else{
+                    layer.msg('账号或密码错误!', {icon : 2,time : 1000});
+				}
+            },
+            error:function () {
+                layer.msg('登录失败!', {icon : 1,time : 1000});
+            }
+		})
+    })
+    $(document).keydown(function (event) {
+        if(event.keyCode ==13){
+            var username=$("#useraccount").val();
+            var password=$("#password").val();
+            if(username==''){
+                layer.msg("请输入账号!",{icon:7})
+                return false;
+            }
+            if(password==''){
+                layer.msg("请输入密码!",{icon:7})
+                return false;
+            }
+            $.ajax({
+                url:"/user/login",
+                data:{
+                    'username':username,
+                    'password':password
+                },
+                type:"post",
+                success:function(data){
+                    if(data){
+                        layer.msg('登录成功!', {icon : 1,time : 500},function () {
+                            window.parent.location.href="/";
+                        });
+                    }else{
+                        layer.msg('账号或密码错误!', {icon : 2,time : 1000});
+                    }
+                },
+                error:function () {
+                    layer.msg('登录失败!', {icon : 1,time : 1000});
+                }
+            })
+		}
+    })
+</script>
+</body>
+</html>

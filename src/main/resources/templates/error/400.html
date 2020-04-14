@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>404 - 阡陌</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" th:href="@{/asserts/layui/css/layui.css}">
+	<link rel="stylesheet" th:href="@{/asserts/static/css/mian.css}">
+</head>
+<body class="lay-blog">
+		<div th:replace="commpontes/bar::topbar(acitveUri='')">
+
+		</div>
+		<div class="container-wrap" style="margin-bottom: 50px">
+			<div class="container">
+					<div class="contar-wrap">
+						<div style="padding: 150px 0 50px; text-align: center; font-size: 30px; color: #ccc; font-weight: 300;">
+							请求错误
+						</div>
+					</div>
+			</div>
+		</div>
+		<div th:replace="commpontes/bar::footerbar">
+
+		</div>
+		<script th:src="@{/asserts/layui/layui.js}"></script>
+		<script>
+            layui.config({
+                base: '../asserts/static/js/'
+            }).use('blog');
+		</script>
+</body>
+</html>

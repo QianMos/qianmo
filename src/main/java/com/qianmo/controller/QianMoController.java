@@ -95,7 +95,7 @@ public class QianMoController {
     public String loginout(HttpServletRequest request){
         request.getSession().removeAttribute("userid");
         request.getSession().removeAttribute("username");
-        return "index";
+        return "redirect:/";
     }
     //流加载分页
     @GetMapping("/list")
@@ -162,6 +162,7 @@ public class QianMoController {
         String username = (String) request.getSession().getAttribute("username");
         if(StringUtils.isEmpty(username)){
             userMsgService.setMsg("匿名用户",msg);
+            return true;
         }
         userMsgService.setMsg(username,msg);
         return true;

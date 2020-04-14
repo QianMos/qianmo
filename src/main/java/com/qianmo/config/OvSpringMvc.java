@@ -3,6 +3,7 @@ package com.qianmo.config;
 import com.qianmo.commpent.MyInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -20,10 +21,10 @@ public class OvSpringMvc implements WebMvcConfigurer {
         registry.addViewController("/forgetPwd").setViewName("login/forgetPwd");
     }
 
-//    @Override
-//    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-//        registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
-//    }
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/favicon.ico").addResourceLocations("classpath:/static/");
+    }
     //自定义拦截器
     @Override
     public void addInterceptors(InterceptorRegistry registry) {

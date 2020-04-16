@@ -1,6 +1,7 @@
 package com.qianmo.entity;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.Date;
 
 /**
@@ -15,7 +16,7 @@ public class UserBk implements Serializable {
     private String bktitle;
     private String bktext;
     private Integer bkopen;
-    private Date bkcreatetime;
+    private Timestamp bkcreatetime;
 
     public String getUsername() {
         return username;
@@ -65,11 +66,11 @@ public class UserBk implements Serializable {
         this.bkopen = bkopen;
     }
 
-    public Date getBkcreatetime() {
+    public Timestamp getBkcreatetime() {
         return bkcreatetime;
     }
 
-    public void setBkcreatetime(Date bkcreatetime) {
+    public void setBkcreatetime(Timestamp bkcreatetime) {
         this.bkcreatetime = bkcreatetime;
     }
 }

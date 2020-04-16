@@ -23,7 +23,7 @@
 							<div class="item" th:each="li:${list}">
 								<div class="item-box  layer-photos-demo1 layer-photos-demo">
 									<h3 th:text="${li.bktitle}"></h3>
-									<h5>作者：<span th:text="${li.username}"></span>   发布于：<span th:text="${#dates.format(li.bkcreatetime,'yyyy-MM-dd HH:mm')}"></span></h5>
+									<h5>作者：<span th:text="${li.username}"></span>   发布于：<span th:text="${#dates.format(li.bkcreatetime,'yyyy-MM-dd')}"></span></h5>
 									<p th:text="${li.bktext}"></p>
 								</div>
 							</div>

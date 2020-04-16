@@ -52,7 +52,7 @@
 						<div class="item" th:each="li:${mylist}">
 							<div class="item-box  layer-photos-demo1 layer-photos-demo">
 								<h3 th:text="${li.bktitle}"></h3>
-								<h5>发布于：<span  th:text="${#dates.format(li.bkcreatetime,'yyyy-MM-dd HH:mm')}"></span></h5>
+								<h5>发布于：<span  th:text="${#dates.format(li.bkcreatetime,'yyyy-MM-dd')}"></span></h5>
 								<p th:text="${li.bktext}"></p>
 								<div class="count layui-clear">
 									<span class="pull-right like" th:attr="deluri=${li.userbkid}"><em style="color: red">删除</em></span>
@@ -112,7 +112,7 @@
                             '<div class="item">'+
                                 '<div class="item-box  layer-photos-demo1 layer-photos-demo">'+
                                 '<h3>'+item.bktitle+'</h3>'+
-                                '<h5>'+"发布于："+'<span>'+util.toDateString(item.bkcreatetime, 'yyyy-MM-dd HH:mm')+'</span></h5>'
+                                '<h5>'+"发布于："+'<span>'+util.toDateString(item.bkcreatetime, 'yyyy-MM-dd')+'</span></h5>'
                             +'<p>'+item.bktext+'</p>'+
                                 '<div class="count layui-clear">'+
                                 '<span class="pull-right like" th:attr="deluri='+item.userbkid+'">'+'<em style="color: red">'+"删除"+'</em></span>'+
@@ -147,7 +147,6 @@
 				},
 				type:'post',
 				success:function (datas) {
-				    console.log("AAAAa")
 					$("#contents").prepend('<div class="item">'+
                         '<div class="item-box  layer-photos-demo1 layer-photos-demo">'+
                         '<h3>'+data.field.title+'</h3>'+

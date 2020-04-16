@@ -17,6 +17,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
@@ -189,7 +190,6 @@ public class QianMoController {
     @ResponseBody
     public Map<String,Object> setBk(@RequestParam("bktitle")String bktitle,@RequestParam("bkswitch")Integer bkswitch, @RequestParam("bktext")String bktext,HttpServletRequest request){
         String userid = (String) request.getSession().getAttribute("userid");
-        String username = (String) request.getSession().getAttribute("username");
         String s = UUID.randomUUID().toString();
         UserBk bk = new UserBk();
         bk.setUserbkid(s);
@@ -198,9 +198,10 @@ public class QianMoController {
         bk.setBktext(bktext);
         bk.setBkopen(bkswitch);
         Date date = new Date();
-        bk.setBkcreatetime(date);
+        Timestamp timestamp = new Timestamp(date.getTime());
+        bk.setBkcreatetime(timestamp);
         userBkService.addBk(bk);
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         Map<String, Object> map = new HashMap<>();
         map.put("time",format.format(date));
         map.put("userbkid",s);

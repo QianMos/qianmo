@@ -50,5 +50,4 @@ public class MD5Untils {
         return s;
 
     }
-
 }

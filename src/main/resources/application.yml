@@ -39,3 +39,7 @@ aliyun:
     accessKeySecret: #个人阿里云的keySecret
     SignName: #个人阿里云的短信签名
     TemplateCode: #个人阿里云的短信模板
+  email:
+    AccountName: #阿里邮箱发信域名
+    FromAlias: #阿里邮箱发信地址
+    TagName: #阿里邮箱邮件标签

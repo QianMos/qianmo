@@ -20,7 +20,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class SmsUntil {
     @Autowired
-    Environment env;
+    Environment env;//获取yml中的配置文件
     public String sendSms(String phone,String code) {
         DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou", env.getProperty("aliyun.sms.accessKeyId"), env.getProperty("aliyun.sms.accessKeySecret"));
         IAcsClient client = new DefaultAcsClient(profile);
